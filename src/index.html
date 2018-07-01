@@ -46,8 +46,11 @@ var createScene = function () {
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
 
+
+   
+    
     // This creates and positions a free camera (non-mesh)
-    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-20,20, 40), scene);
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-20, 10, -20), scene);
 
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
@@ -56,6 +59,9 @@ var createScene = function () {
     camera.attachControl(canvas, true);
 var blueMat = new BABYLON.StandardMaterial("blueMat", scene);
   blueMat.emissiveColor = new BABYLON.Color3(0, 0, 1);
+  blueMat.freeze();
+  var greenMat = new BABYLON.StandardMaterial("blueMat", scene);
+  greenMat.emissiveColor = new BABYLON.Color3(0, 1, 0);
     // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
@@ -63,44 +69,79 @@ var blueMat = new BABYLON.StandardMaterial("blueMat", scene);
     light.intensity = 0.3;
 
     // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 1, scene);
+    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 6, 2, scene);
 
-      var sphereTwo = BABYLON.Mesh.CreateSphere("sphere2", 16, 2, scene);
+      var sphereTwo = BABYLON.Mesh.CreateSphere("sphere2", 6, 2, scene);
+
+      var sphereThree = BABYLON.Mesh.CreateSphere("sphere2", 6, 2, scene);
+
+      var sphereFour = BABYLON.Mesh.CreateSphere("sphere2", 6, 2, scene);
+
+      var sphereFive = BABYLON.Mesh.CreateSphere("sphere2", 6, 2, scene);
+
+      var sphereSix = BABYLON.Mesh.CreateSphere("sphere2", 6, 2, scene);
 
     // Move the sphere upward 1/2 its height
      sphere.position.z = -4;
     sphere.position.y =1;
-     sphereTwo.position.x =-4;
+     sphereTwo.position.x =-10;
       sphereTwo.position.y =1;
-       sphereTwo.position.z = -1;
+       sphereTwo.position.z = -3.5;
+    sphereThree.position.x =  Math.floor(Math.random() * Math.floor(10));
+      sphereThree.position.y =  1;
+      sphereThree.position.z =  Math.floor(Math.random() * Math.floor(10));
+          sphereFour.position.x =  Math.floor(Math.random() * Math.floor(10));
+      sphereFour.position.y =  1;
+       sphereFour.position.z =  Math.floor(Math.random() * Math.floor(10));
 
-	var grass1 = new BABYLON.StandardMaterial("grass1", scene);
-	grass1.emissiveTexture = new BABYLON.Texture("textures/grass.png", scene);
+       sphereFive.position.x =  Math.floor(Math.random() * Math.floor(10));
+        sphereFive.position.y =  1;
+         sphereFive.position.z =  Math.floor(Math.random() * Math.floor(10));
+         sphereSix.position.x =  Math.floor(Math.random() * Math.floor(10));
+      sphereSix.position.y =  1;
+         sphereSix.position.z =  Math.floor(Math.random() * Math.floor(10));
+
+
+
+
     // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
     var ground = BABYLON.Mesh.CreateGround("ground1", 40, 70  , 2, scene);
-    var groundTwo = BABYLON.Mesh.CreateGround("ground1", 5, 70, 2, scene);
-      var groundThree = BABYLON.Mesh.CreateGround("ground1", 5, 70, 2, scene);
-        var groundFour = BABYLON.Mesh.CreateGround("ground1", 5, 40, 2, scene);
-          var groundFive = BABYLON.Mesh.CreateGround("ground1", 5, 40, 2, scene);
-   	var box = BABYLON.MeshBuilder.CreateBox("box", {height: .1, width:.1, depth: .1, scene});
-      var boxTwo = BABYLON.MeshBuilder.CreateBox("box", {height: .1, width:16, depth: .1, scene});
+    var groundTwo = BABYLON.Mesh.CreateGround("ground1", 2.5, 70, 2, scene);
+      var groundThree = BABYLON.Mesh.CreateGround("ground1", 2.5, 70, 2, scene);
+        var groundFour = BABYLON.Mesh.CreateGround("ground1", 2.5, 40, 2, scene);
+          var groundFive = BABYLON.Mesh.CreateGround("ground1", 2.5, 40, 2, scene);
+   	var box = BABYLON.MeshBuilder.CreateBox("box", {height: .5, width:.5, depth: .5, scene});
+    
+var boxTwo = BABYLON.MeshBuilder.CreateBox("boxTwo", {height: .5, width:40, depth: 70, scene});
+var boxThree = BABYLON.MeshBuilder.CreateBox("boxThree", {height: 2.5, width:.5, depth: 71, scene});
 
-    var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
-myMaterial.diffuseColor = new BABYLON.Color3(1, 0, 1);
-myMaterial.specularColor = new BABYLON.Color3(0.5, 0.6, 0.87);
-myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
-myMaterial.ambientColor = new BABYLON.Color3(0.23, 0.98, 0.53);
-  box.material = myMaterial;
+var boxFour = BABYLON.MeshBuilder.CreateBox("boxFour", {height: 2.5, width:.5, depth: 71, scene});
+
+var boxFive = BABYLON.MeshBuilder.CreateBox("boxFive", {height: 2.5, width:40, depth: .5, scene});
+
+var boxSix = BABYLON.MeshBuilder.CreateBox("boxSix", {height: 2.5, width:40, depth: .5, scene});
+
+
 	box.position.y = 1;
-  boxTwo.position.z=-1;
-   boxTwo.position.y=1;
+    
+  boxTwo.position.z=.1;
+   boxTwo.position.x=.1;
+      boxThree.position.x=20.25;
+        boxFour.position.x=-20.25;
+        boxThree.position.y=1.25;
+        boxFour.position.y=1.25;
 
-    	box.position.x =-7;
+   boxTwo.position.y=-.25;
+boxFive.position.z=35.25;
+        boxSix.position.z=-35.25;
+boxFive.position.y=1.25;
+        boxSix.position.y=1.25;
+
+    	box.position.x =-5;
     	box.position.z = -1.5;
     scene.enablePhysics();
-		var grid = new BABYLON.GridMaterial("grid", scene);	
-		var gridTwo = new BABYLON.GridMaterial("grid", scene);	
-		var gridThree = new BABYLON.GridMaterial("grid", scene);	
+		var grid = new BABYLON.GridMaterial("grid", scene);		
+		
 groundTwo.rotate(BABYLON.Axis.Z, Math.PI/2, BABYLON.Space.WORLD);
 groundThree.rotate(BABYLON.Axis.Z, Math.PI/2, BABYLON.Space.WORLD);
 groundFour.rotate(BABYLON.Axis.Z, Math.PI/2, BABYLON.Space.WORLD);
@@ -108,44 +149,60 @@ groundFour.rotate(BABYLON.Axis.Y, Math.PI/2, BABYLON.Space.WORLD);
 groundFive.rotate(BABYLON.Axis.Z, Math.PI/2, BABYLON.Space.WORLD);
 groundFive.rotate(BABYLON.Axis.Y, Math.PI/2, BABYLON.Space.WORLD);
 groundThree.position.x = -20;
+groundThree.position.y = 1.25;
 groundFour.position.z = -35;
+groundFour.position.y = 1.25;
 groundFive.position.z = 35;
+groundFive.position.y = 1.25;
 groundTwo.position.x = 20;
-	grid.gridRatio = 0.1;
-	gridTwo.gridRatio = 0.5;
-	gridThree.gridRatio = 0.1;
-	grid.majorUnitFrequency = 2;
-	gridTwo.majorUnitFrequency = 2;
-	gridThree.majorUnitFrequency = 2;
+groundTwo.position.y = 1.25;
+	grid.gridRatio = 1;
+
+	grid.majorUnitFrequency = 5;
 	// Set the diffuse texture
     sphere.material = grid;
-    grid.lineColor = new BABYLON.Color4.FromHexString("#77e0f8FF");
-      gridTwo.lineColor = new BABYLON.Color4.FromHexString("#54f64cFF");
-        gridThree.lineColor = new BABYLON.Color4.FromHexString("#77e0f8FF");
+    
+
+ grid.mainColor = new BABYLON.Color4.FromHexString("#770000FF");
+    grid.lineColor = new BABYLON.Color4.FromHexString("#FF0000FF");
+boxTwo.material = blueMat;
+    boxThree.material = blueMat;
+    boxFour.material = blueMat;
+    boxFive.material = blueMat;
+    boxSix.material = blueMat;
     sphereTwo.material = grid;
-    ground.material = blueMat;
+      sphereThree.material = grid;
+        sphereFour.material = grid;
+          sphereFive.material = grid;
+    ground.material = greenMat;
+    ground.material.alpha = 0;
   groundTwo.material = blueMat;  groundThree.material = blueMat;  groundFour.material = blueMat;  groundFive.material = blueMat;
 	sphere.physicsImpostor = new BABYLON.PhysicsImpostor(sphere, BABYLON.PhysicsImpostor.SphereImpostor, { mass:100, restitution: .2, friction: 1000 }, scene);
-    sphereTwo.physicsImpostor = new BABYLON.PhysicsImpostor(sphereTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restitution: 1 , friction: 1001}, scene);
-    box.physicsImpostor = new BABYLON.PhysicsImpostor(box, BABYLON.PhysicsImpostor.SphereImpostor, { mass:101, restitution:.7 }, scene);
+    sphereTwo.physicsImpostor = new BABYLON.PhysicsImpostor(sphereTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restitution: .2 , friction: 1000}, scene);
+        sphereThree.physicsImpostor = new BABYLON.PhysicsImpostor(sphereThree, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restitution: .2 , friction: 1000}, scene);
+            sphereFour.physicsImpostor = new BABYLON.PhysicsImpostor(sphereFour, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restitution: .2 , friction: 1000}, scene);
+                sphereFive.physicsImpostor = new BABYLON.PhysicsImpostor(sphereFive, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restitution: .2 , friction: 1000}, scene);
+  //f  box.physicsImpostor = new BABYLON.PhysicsImpostor(box, BABYLON.PhysicsImpostor.SphereImpostor, { mass:101, restitution:.7 }, scene);
 
   // boxTwo.physicsImpostor = new BABYLON.PhysicsImpostor(boxTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass:.00001, restitution:.1 }, scene);
-	ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
-  groundTwo.physicsImpostor = new BABYLON.PhysicsImpostor(groundTwo, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
-  groundThree.physicsImpostor = new BABYLON.PhysicsImpostor(groundThree, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
-  groundFour.physicsImpostor = new BABYLON.PhysicsImpostor(groundFour, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
-  groundFive.physicsImpostor = new BABYLON.PhysicsImpostor(groundFive, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
+	ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000, disableBidirectionalTransformation: true }, scene);
+  groundTwo.physicsImpostor = new BABYLON.PhysicsImpostor(groundTwo, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 , disableBidirectionalTransformation: true}, scene);
+  groundThree.physicsImpostor = new BABYLON.PhysicsImpostor(groundThree, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000, disableBidirectionalTransformation: true }, scene);
+  groundFour.physicsImpostor = new BABYLON.PhysicsImpostor(groundFour, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 , disableBidirectionalTransformation: true}, scene);
+  groundFive.physicsImpostor = new BABYLON.PhysicsImpostor(groundFive, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 , disableBidirectionalTransformation: true}, scene);
     
-    sphere.physicsImpostor.applyImpulse(new BABYLON.Vector3(12, .2, .3), sphere.getAbsolutePosition());
-     box.physicsImpostor.applyImpulse(new BABYLON.Vector3(1000, 0, 500), box.getAbsolutePosition());
 
+     sphereTwo.physicsImpostor.applyImpulse(new BABYLON.Vector3(10000, 10, 500), box.getAbsolutePosition());
 
 	//sphere.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(1, 0, 1));
  // box.physicsImpostor.setLinearVelocity(new BABYLON.Vector3( -3, 2,1));
-var g = new BABYLON.Vector3(0, -10, 0);
+var g = new BABYLON.Vector3(0, -1000, 0);
 
-  
-    scene.getPhysicsEngine().setGravity(g);
+
+
+    scene.getPhysicsEngine().setGravity(g);    // Instrumentation
+    
+    
     return scene;
 
 };
