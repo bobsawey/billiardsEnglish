@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "balls-1b7bd"
+    "default": "balls-1b7bd",
+    "alpha": "billiards-english"
   }
 }

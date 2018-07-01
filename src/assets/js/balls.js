@@ -1,42 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Balls</title>
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-      <style>
-        html, body {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #renderCanvas {
-            width: 100%;
-            height: 100%;
-            touch-action: none;
-        }
-    </style>
-     <script src="https://cdn.babylonjs.com/cannon.js"></script>
-    <script src="https://cdn.babylonjs.com/babylon.js"></script>
-        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-    <script src="../assets/js/babylon.gridMaterial.min.js"></script>
-    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
-     <script src="../assets/js/balls.js"></script>
-</head>
-<body>
-
-<app-root></app-root>
-   <canvas id="renderCanvas" touch-action="none"></canvas> 
-
-    <script>
-    	 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
+ var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
 
             var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
   var gravityVector = new BABYLON.Vector3(1,10, 0);
@@ -239,6 +201,3 @@ var lines = BABYLON.MeshBuilder.CreateLines("lines", {points: myPoints}, scene);
             window.addEventListener("resize", function () { // Watch for browser/canvas resize events
                     engine.resize();
             });
-    </script>
-</body>
-</html>
