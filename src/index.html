@@ -47,7 +47,7 @@ var createScene = function () {
     var scene = new BABYLON.Scene(engine);
 
     // This creates and positions a free camera (non-mesh)
-    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-10, 2, 10), scene);
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-5, 1, -10), scene);
 
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
@@ -70,23 +70,34 @@ var createScene = function () {
      sphere.position.z = -4;
     sphere.position.y =1;
      sphereTwo.position.x =-4;
-      sphereTwo.position.y =2;
+      sphereTwo.position.y =1;
        sphereTwo.position.z = -1;
 
 	var grass1 = new BABYLON.StandardMaterial("grass1", scene);
 	grass1.emissiveTexture = new BABYLON.Texture("textures/grass.png", scene);
     // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
     var ground = BABYLON.Mesh.CreateGround("ground1", 16, 16, 2, scene);
+    var groundTwo = BABYLON.Mesh.CreateGround("ground1", 16, 16, 2, scene);
    	var box = BABYLON.MeshBuilder.CreateBox("box", {height: .1, width:.1, depth: .1, scene});
-  
+      var boxTwo = BABYLON.MeshBuilder.CreateBox("box", {height: .1, width:16, depth: .1, scene});
+
+    var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
+myMaterial.diffuseColor = new BABYLON.Color3(1, 0, 1);
+myMaterial.specularColor = new BABYLON.Color3(0.5, 0.6, 0.87);
+myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+myMaterial.ambientColor = new BABYLON.Color3(0.23, 0.98, 0.53);
+  box.material = myMaterial;
 	box.position.y = 1;
-    	box.position.x =-4;
-    	box.position.z = -1;
+  boxTwo.position.z=-1;
+   boxTwo.position.y=1;
+
+    	box.position.x =-7;
+    	box.position.z = -1.5;
     scene.enablePhysics();
 		var grid = new BABYLON.GridMaterial("grid", scene);	
 		var gridTwo = new BABYLON.GridMaterial("grid", scene);	
 		var gridThree = new BABYLON.GridMaterial("grid", scene);	
-
+groundTwo.rotate(BABYLON.Axis.Z, Math.PI/4, BABYLON.Space.WORLD);
 	grid.gridRatio = 0.1;
 	gridTwo.gridRatio = 0.5;
 	gridThree.gridRatio = 0.1;
@@ -102,12 +113,17 @@ var createScene = function () {
     ground.material = gridTwo;
 
 	sphere.physicsImpostor = new BABYLON.PhysicsImpostor(sphere, BABYLON.PhysicsImpostor.SphereImpostor, { mass:100, restitution: .2, friction: 1000 }, scene);
-    sphereTwo.physicsImpostor = new BABYLON.PhysicsImpostor(sphereTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1, restitution: .5 }, scene);
-    box.physicsImpostor = new BABYLON.PhysicsImpostor(box, BABYLON.PhysicsImpostor.SphereImpostor, { mass:1000, restitution:1 }, scene);
+    sphereTwo.physicsImpostor = new BABYLON.PhysicsImpostor(sphereTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 50, restitution: .2 , friction: 1001}, scene);
+    box.physicsImpostor = new BABYLON.PhysicsImpostor(box, BABYLON.PhysicsImpostor.SphereImpostor, { mass:101, restitution:.7 }, scene);
+
+  // boxTwo.physicsImpostor = new BABYLON.PhysicsImpostor(boxTwo, BABYLON.PhysicsImpostor.SphereImpostor, { mass:.00001, restitution:.1 }, scene);
 	ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
+  groundTwo.physicsImpostor = new BABYLON.PhysicsImpostor(groundTwo, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.1, friction: 1000 }, scene);
     
     sphere.physicsImpostor.applyImpulse(new BABYLON.Vector3(12, .2, .3), sphere.getAbsolutePosition());
-     box.physicsImpostor.applyImpulse(new BABYLON.Vector3(-1, 12, -10), box.getAbsolutePosition());
+     box.physicsImpostor.applyImpulse(new BABYLON.Vector3(1000, 0, 500), box.getAbsolutePosition());
+
+
 	//sphere.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(1, 0, 1));
  // box.physicsImpostor.setLinearVelocity(new BABYLON.Vector3( -3, 2,1));
 var g = new BABYLON.Vector3(0, -10, 0);
