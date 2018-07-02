@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import '../alert';
-import '../balls.ts';
+import '../balls';
 
 @Component({
   selector: 'app-root',
