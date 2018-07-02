@@ -12,6 +12,7 @@
         "favicon.ico"
       ],
       "index": "index.html",
+      "alert" : "alert.ts",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",

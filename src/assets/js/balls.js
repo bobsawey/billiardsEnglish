@@ -1,14 +1,14 @@
  var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
 
-            var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-  var gravityVector = new BABYLON.Vector3(1,10, 0);
-    var physicsPlugin = new BABYLON.CannonJSPlugin();
+ var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+var gravityVector = new BABYLON.Vector3(1,10, 0);
+var physicsPlugin = new BABYLON.CannonJSPlugin();
  /******* Add the create scene function ******/
 var createScene = function () {
 
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
-scene.collisionsEnabled = true;
+    scene.collisionsEnabled = true;
 
    
     
